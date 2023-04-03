@@ -9,8 +9,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(MeshFilter))]
 public class DrawCurves : MonoBehaviour
 {
-    [SerializeField] NavMeshAgent navMesh;
-
     [SerializeField] Mesh2D shape2D;
 
     [Range(2, 32)]
@@ -139,6 +137,7 @@ public class DrawCurves : MonoBehaviour
         return dist;
     }
 
+
     public void OnDrawGizmos()
     {
 
@@ -156,7 +155,7 @@ public class DrawCurves : MonoBehaviour
         Gizmos.color = Color.red;
 
         OrientedPoint testPoint = GetBezierOP(tTest);
-         Handles.PositionHandle(testPoint.pos, testPoint.rot);
+        Handles.PositionHandle(testPoint.pos, testPoint.rot);
 
         Vector3[] verts =  shape2D.vertices.Select(v => testPoint.LocalToWorldPos(v.point)).ToArray();
 
